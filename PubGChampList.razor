@@ -1,0 +1,39 @@
+@page "/pubgChampList"
+
+
+<button  @onclick="playersArray" @bind="topplayerlists"> Tap to View</button>
+
+@foreach(var player in topPlayers)
+{
+    <p>@player</p>
+}
+
+<input type="number" value="5" @onchange="@(e=>topplayerlists(Int32.Parse(e.Value.ToString())) )"/>
+@code
+{
+
+    private int setList =0;
+    private void topplayerlists(int maximumView)
+    {
+        setList=maximumView;
+    }
+    
+    private string[] topPlayers= new string[]
+    {"Paraboy","Order","Johnathan","Koops","Frozen"}; 
+
+    private void playersArray()
+    {
+        @for (int i=0;i<setList;i++)
+           {
+             if (i<5)
+               {
+                 @topPlayers[i];
+               }
+           }
+    }
+     
+}
+
+
+    
+
